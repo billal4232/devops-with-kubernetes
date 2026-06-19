@@ -22,3 +22,7 @@ Added a GET route to the todo app returning an HTML page. Confirmed access from 
 Exercise 1.6
 
 Added a NodePort Service to expose the todo app. Accessible at localhost:8082 via the k3d port mapping (no port-forward needed).
+
+Exercise 1.7
+
+Rewrote log-output as a Flask web server: background thread keeps the 5s logging, added a / endpoint returning timestamp + random string. Exposed via ClusterIP Service + Ingress (localhost:8081).
