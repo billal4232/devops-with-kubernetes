@@ -14,3 +14,7 @@ Moved log-output deployment into a manifests/ folder (declarative convention). V
 Exercise 1.4
 
 Created manifests/ folder for the todo app deployment (declarative convention). Verified with rollout restart and log following.
+
+Exercise 1.5
+
+Added a GET route to the todo app returning an HTML page. Confirmed access from the browser via kubectl port-forward.
