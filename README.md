@@ -18,3 +18,7 @@ Created manifests/ folder for the todo app deployment (declarative convention). 
 Exercise 1.5
 
 Added a GET route to the todo app returning an HTML page. Confirmed access from the browser via kubectl port-forward.
+
+Exercise 1.6
+
+Added a NodePort Service to expose the todo app. Accessible at localhost:8082 via the k3d port mapping (no port-forward needed).
