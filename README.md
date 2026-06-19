@@ -30,3 +30,7 @@ Rewrote log-output as a Flask web server: background thread keeps the 5s logging
 Exercise 1.8
 
 Switched the todo app from NodePort to ClusterIP + Ingress (localhost:8081). Removed the log-output Ingress from the cluster to avoid path collision.
+
+Exercise 1.9
+
+Built the ping-pong app: /pingpong returns "pong N" with an in-memory counter that increments per request. Shares one Ingress with log-output — / routes to log-output, /pingpong routes to ping-pong.
