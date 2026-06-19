@@ -26,3 +26,7 @@ Added a NodePort Service to expose the todo app. Accessible at localhost:8082 vi
 Exercise 1.7
 
 Rewrote log-output as a Flask web server: background thread keeps the 5s logging, added a / endpoint returning timestamp + random string. Exposed via ClusterIP Service + Ingress (localhost:8081).
+
+Exercise 1.8
+
+Switched the todo app from NodePort to ClusterIP + Ingress (localhost:8081). Removed the log-output Ingress from the cluster to avoid path collision.
