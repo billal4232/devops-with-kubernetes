@@ -10,3 +10,7 @@ Todo app — Flask web server, prints startup message, port configurable via POR
 Exercise 1.3
 
 Moved log-output deployment into a manifests/ folder (declarative convention). Verified with rollout restart and live log following.
+
+Exercise 1.4
+
+Created manifests/ folder for the todo app deployment (declarative convention). Verified with rollout restart and log following.
