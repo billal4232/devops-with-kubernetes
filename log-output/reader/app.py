@@ -6,8 +6,10 @@ app = Flask(__name__)
 def home():
     try:
         with open("/usr/src/app/files/output.txt", "r") as f:
-            content = f.read()
-        return content
+            log_line = f.read()
+        with open("/usr/src/app/files/pingpong.txt", "r") as f:
+            pings = f.read()
+        return f"<pre>{log_line}\nPing / Pongs: {pings}</pre>"
     except Exception as e:
         return f"No data yet: {e}"
 

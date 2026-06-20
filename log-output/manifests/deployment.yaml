@@ -12,9 +12,10 @@ spec:
       labels:
         app: log-output
     spec:
-      volumes:                          
+      volumes:
         - name: shared-files
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: shared-pvc
       containers:
         - name: log-output-writer               
           image: log-output-writer  
