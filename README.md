@@ -42,3 +42,7 @@ Split log-output into two containers in one pod: a writer (generates the random 
 Exercise 1.11
 
 Shared a PersistentVolume between ping-pong and log-output (separate pods). ping-pong writes its counter to a file on the PVC; log-output's reader reads it and shows "Ping / Pongs: N" alongside the timestamp and random string. PV/PVC definitions kept in a separate top-level manifests/ folder.
+
+Exercise 1.12
+
+Added a cached random image to the todo app. Fetches from picsum.photos, caches on the persistent volume for 10 minutes, then refetches. Verified the image survives pod deletion (lives on the PV, not the pod).
