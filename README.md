@@ -46,3 +46,7 @@ Shared a PersistentVolume between ping-pong and log-output (separate pods). ping
 Exercise 1.12
 
 Added a cached random image to the todo app. Fetches from picsum.photos, caches on the persistent volume for 10 minutes, then refetches. Verified the image survives pod deletion (lives on the PV, not the pod).
+
+Exercise 1.13
+
+Added todo UI to the project: input field (140 char max), Send button, and a hardcoded todo list.

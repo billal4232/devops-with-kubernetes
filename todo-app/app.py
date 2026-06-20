@@ -15,7 +15,24 @@ def fetch_image():
 
 @app.route("/")
 def home():
-    return '<h1>Todo App</h1><img src="/image">'
+    return '''
+    <html>
+    <body style="text-align: center;">
+        <h1>Todo App</h1>
+        <img src="/image" style="width: 200px; border-radius: 10px;">
+        <div>
+            <input type="text" maxlength="140" placeholder="Enter a new todo (max 140 characters)" style="width: 300px; padding: 8px;">
+            <button style="padding: 8px;">Send</button>
+        </div>
+        <h2>Todos</h2>
+        <ul style="list-style: none; text-align: left; display: inline-block; line-height: 2;">
+            <li>Learn Kubernetes basics</li>
+            <li>Deploy application to cluster</li>
+            <li>Configure persistent volumes</li>
+        </ul>
+    </body>
+    </html>
+    '''
 
 @app.route("/image")
 def image():
