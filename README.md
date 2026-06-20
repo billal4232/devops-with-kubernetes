@@ -34,3 +34,6 @@ Switched the todo app from NodePort to ClusterIP + Ingress (localhost:8081). Rem
 Exercise 1.9
 
 Built the ping-pong app: /pingpong returns "pong N" with an in-memory counter that increments per request. Shares one Ingress with log-output — / routes to log-output, /pingpong routes to ping-pong.
+
+Exercise 1.10
+Split log-output into two containers in one pod: a writer (generates the random string, writes timestamp + string to a file every 5s) and a reader (serves the file's contents over HTTP). They share data via an emptyDir volume mounted at /usr/src/app/files in both containers.
