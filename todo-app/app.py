@@ -1,4 +1,4 @@
-from flask import Flask, send_file
+from flask import Flask, send_file, request, redirect
 import os
 import time
 import requests
@@ -15,24 +15,36 @@ def fetch_image():
 
 @app.route("/")
 def home():
-    return '''
+    todos = requests.get("http://todo-backend-svc:3005/todos").json()
+
+    todo_items = ""
+    for todo in todos:
+        todo_items += f"<li>{todo}</li>"
+
+    return f'''
     <html>
     <body style="text-align: center;">
         <h1>Todo App</h1>
         <img src="/image" style="width: 200px; border-radius: 10px;">
         <div>
-            <input type="text" maxlength="140" placeholder="Enter a new todo (max 140 characters)" style="width: 300px; padding: 8px;">
-            <button style="padding: 8px;">Send</button>
+            <form action="/new-todo" method="post">
+                <input type="text" name="todo" maxlength="140" placeholder="Enter a new todo (max 140 characters)">
+                <button type="submit">Send</button>
+            </form>
         </div>
         <h2>Todos</h2>
-        <ul style="list-style: none; text-align: left; display: inline-block; line-height: 2;">
-            <li>Learn Kubernetes basics</li>
-            <li>Deploy application to cluster</li>
-            <li>Configure persistent volumes</li>
+        <ul style="list-style: none; display: inline-block; text-align: left;">
+            {todo_items}
         </ul>
     </body>
     </html>
     '''
+
+@app.route("/new-todo", methods=["POST"])
+def new_todo():
+    todo = request.form["todo"]
+    requests.post("http://todo-backend-svc:3005/todos", json={"todo": todo})
+    return redirect("/")
 
 @app.route("/image")
 def image():
