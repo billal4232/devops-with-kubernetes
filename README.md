@@ -62,3 +62,7 @@ Split the project into todo-app (frontend) and todo-backend (new service). Backe
 Exercise 2.3
 
 Created two namespaces: `exercises` (log-output, ping-pong) and `project` (todo-app, todo-backend). Moved each app's resources into its namespace via metadata. Added a dedicated PV/PVC in the project namespace for todo-app's image cache.
+
+Exercise 2.4
+
+Created the `project` namespace and moved all project resources (todo-app, todo-backend, PV/PVC) into it. This was completed together with 2.3, as that exercise introduced the project-namespace requirement.
