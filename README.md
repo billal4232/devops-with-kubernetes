@@ -58,3 +58,7 @@ Connected log-output and ping-pong over HTTP instead of a shared file. ping-pong
 Exercise 2.2
 
 Split the project into todo-app (frontend) and todo-backend (new service). Backend has GET/POST /todos storing todos in memory. todo-app fetches and posts via http://todo-backend-svc:3005 (ClusterIP, internal). Todos can be created from the form and render in the browser.
+
+Exercise 2.3
+
+Created two namespaces: `exercises` (log-output, ping-pong) and `project` (todo-app, todo-backend). Moved each app's resources into its namespace via metadata. Added a dedicated PV/PVC in the project namespace for todo-app's image cache.

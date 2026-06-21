@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: project
   name: todo-app       
 spec:
   replicas: 1
@@ -15,7 +16,7 @@ spec:
       volumes:
         - name: shared-files
           persistentVolumeClaim:
-            claimName: shared-pvc
+            claimName: project-pvc
       containers:
         - name: todo-app
           image: todo-app
