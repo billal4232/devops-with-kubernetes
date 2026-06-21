@@ -12,8 +12,10 @@ def pingpong():
     global counter
     response = f"pong {counter}"
     counter = counter + 1
-    with open("/usr/src/app/files/pingpong.txt", "w") as f:
-        f.write(str(counter))
     return response
+
+@app.route("/pings")
+def pings():
+    return str(counter)
 
 app.run(host="0.0.0.0", port=int(PORT))

@@ -50,3 +50,7 @@ Added a cached random image to the todo app. Fetches from picsum.photos, caches 
 Exercise 1.13
 
 Added todo UI to the project: input field (140 char max), Send button, and a hardcoded todo list.
+
+Exercise 2.1
+
+Connected log-output and ping-pong over HTTP instead of a shared file. ping-pong exposes a /pings endpoint returning its count; log-output fetches it via http://ping-pong-svc:3003/pings (pod-to-pod by service name). Removed the shared volume; log-output uses emptyDir for its own writer/reader file.
