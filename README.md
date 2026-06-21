@@ -66,3 +66,7 @@ Created two namespaces: `exercises` (log-output, ping-pong) and `project` (todo-
 Exercise 2.4
 
 Created the `project` namespace and moved all project resources (todo-app, todo-backend, PV/PVC) into it. This was completed together with 2.3, as that exercise introduced the project-namespace requirement.
+
+Exercise 2.5
+
+Added a ConfigMap to log-output defining a file (information.txt) and an env variable (MESSAGE). The reader mounts the file as a volume and reads MESSAGE from the environment, printing both alongside the usual output.
