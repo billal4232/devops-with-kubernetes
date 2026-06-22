@@ -74,3 +74,7 @@ Added a ConfigMap to log-output defining a file (information.txt) and an env var
 Exercise 2.6
 
 Removed all hardcoded config from the project. todo-app reads BACKEND_URL, IMAGE_PATH, PICSUM_URL, PORT from env variables defined in a ConfigMap, injected via envFrom. No hardcoded URLs, ports, or paths in source.
+
+Exercise 2.7
+
+Ping-pong counter persisted in a PostgreSQL StatefulSet, reached via a headless service with credentials from a Secret. Counter now survives pod restarts.
