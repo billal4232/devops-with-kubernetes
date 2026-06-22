@@ -6,16 +6,19 @@ import requests
 app = Flask(__name__)
 
 PORT = os.getenv("PORT", "3000")
-IMAGE_PATH = "/usr/src/app/files/image.jpg"
+BACKEND_URL = os.getenv("BACKEND_URL", "http://todo-backend-svc:3005")
+IMAGE_PATH = os.getenv("IMAGE_PATH", "/usr/src/app/files/image.jpg")
+PICSUM_URL = os.getenv("PICSUM_URL", "https://picsum.photos/1200")
+
 
 def fetch_image():
-    response = requests.get("https://picsum.photos/1200")
+    response = requests.get(PICSUM_URL)
     with open(IMAGE_PATH, "wb") as f:
         f.write(response.content)
 
 @app.route("/")
 def home():
-    todos = requests.get("http://todo-backend-svc:3005/todos").json()
+    todos = requests.get(f"{BACKEND_URL}/todos").json()
 
     todo_items = ""
     for todo in todos:
@@ -43,7 +46,7 @@ def home():
 @app.route("/new-todo", methods=["POST"])
 def new_todo():
     todo = request.form["todo"]
-    requests.post("http://todo-backend-svc:3005/todos", json={"todo": todo})
+    requests.post(f"{BACKEND_URL}/todos", json={"todo": todo})
     return redirect("/")
 
 @app.route("/image")

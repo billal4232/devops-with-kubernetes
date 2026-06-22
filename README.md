@@ -70,3 +70,7 @@ Created the `project` namespace and moved all project resources (todo-app, todo-
 Exercise 2.5
 
 Added a ConfigMap to log-output defining a file (information.txt) and an env variable (MESSAGE). The reader mounts the file as a volume and reads MESSAGE from the environment, printing both alongside the usual output.
+
+Exercise 2.6
+
+Removed all hardcoded config from the project. todo-app reads BACKEND_URL, IMAGE_PATH, PICSUM_URL, PORT from env variables defined in a ConfigMap, injected via envFrom. No hardcoded URLs, ports, or paths in source.
