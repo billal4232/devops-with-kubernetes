@@ -1,6 +1,9 @@
 from flask import Flask, request, jsonify
 import os
 import psycopg2
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 app = Flask(__name__)
 
@@ -28,6 +31,13 @@ def get_todos():
 @app.route("/todos", methods=["POST"])
 def create_todo():
     new_todo = request.json["todo"]
+
+    if len(new_todo) > 140:
+        app.logger.warning(f"Rejected todo (too long, {len(new_todo)} chars): {new_todo}")
+        return jsonify({"error": "Todo too long, max 140 characters"}), 400
+
+    app.logger.info(f"Creating todo: {new_todo}")
+
     conn = get_conn()
     cur = conn.cursor()
     cur.execute("INSERT INTO todos (content) VALUES (%s)", (new_todo,))
@@ -35,5 +45,5 @@ def create_todo():
     cur.close()
     conn.close()
     return jsonify({"todo": new_todo})
-    
+
 app.run(host="0.0.0.0", port=int(PORT))

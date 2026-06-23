@@ -86,3 +86,7 @@ Todo-backend now persists todos in a PostgreSQL StatefulSet (project namespace, 
 Exercise 2.9
 
 CronJob (project namespace) runs hourly, fetches a random Wikipedia article via the Special:Random redirect Location header, and POSTs a "Read <URL>" todo to todo-backend. Uses the curlimages/curl image with an inline script — no custom build.
+
+Exercise 2.10
+
+Backend now logs every todo request and enforces a 140-character limit (rejected todos return HTTP 400 and are not saved). Monitoring stack (Prometheus, Loki, Alloy, Grafana) installed via Helm into the monitoring namespace; rejected-todo warnings are visible in Grafana via Loki.
