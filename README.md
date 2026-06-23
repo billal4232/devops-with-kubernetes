@@ -90,3 +90,9 @@ CronJob (project namespace) runs hourly, fetches a random Wikipedia article via 
 Exercise 2.10
 
 Backend now logs every todo request and enforces a 140-character limit (rejected todos return HTTP 400 and are not saved). Monitoring stack (Prometheus, Loki, Alloy, Grafana) installed via Helm into the monitoring namespace; rejected-todo warnings are visible in Grafana via Loki.
+
+Chapter 3 — Cloud (EKS)
+
+3.1
+
+Deployed Ping-pong + Postgres to AWS EKS (instead of GKE), exposed via a LoadBalancer service. Used ECR for the image and the EBS CSI driver for gp2 storage.
