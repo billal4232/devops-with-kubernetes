@@ -82,3 +82,7 @@ Ping-pong counter persisted in a PostgreSQL StatefulSet, reached via a headless 
 Exercise 2.8
 
 Todo-backend now persists todos in a PostgreSQL StatefulSet (project namespace, single replica, dynamic local-path storage). Backend connects via headless service postgres-svc with credentials from a Secret. Todos survive pod restarts.
+
+Exercise 2.9
+
+CronJob (project namespace) runs hourly, fetches a random Wikipedia article via the Special:Random redirect Location header, and POSTs a "Read <URL>" todo to todo-backend. Uses the curlimages/curl image with an inline script — no custom build.

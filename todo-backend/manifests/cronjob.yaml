@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: todo-generator
+  namespace: project
+spec:
+  schedule: "0 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: OnFailure
+          containers:
+            - name: todo-generator
+              image: curlimages/curl
+              command:
+                - /bin/sh
+                - -c
+                - |
+                  URL=$(curl -s -w "%{redirect_url}" -o /dev/null https://en.wikipedia.org/wiki/Special:Random)
+                  curl -X POST todo-backend-svc:3005/todos -H "Content-Type: application/json" -d "{\"todo\": \"Read $URL\"}"

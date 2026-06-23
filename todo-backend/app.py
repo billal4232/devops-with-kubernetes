@@ -35,4 +35,5 @@ def create_todo():
     cur.close()
     conn.close()
     return jsonify({"todo": new_todo})
+    
 app.run(host="0.0.0.0", port=int(PORT))
