@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: exercises
+  name: log-output
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: log-output
+  template:
+    metadata:
+      labels:
+        app: log-output
+    spec:
+      volumes:
+        - name: shared-files
+          emptyDir: {}
+        - name: config-file
+          configMap:
+            name: log-output-config
+      containers:
+        - name: log-output-writer
+          image: 688600819246.dkr.ecr.eu-north-1.amazonaws.com/log-output-writer:latest
+          volumeMounts:
+            - name: shared-files
+              mountPath: /usr/src/app/files
+        - name: log-output-reader
+          image: 688600819246.dkr.ecr.eu-north-1.amazonaws.com/log-output-reader:latest
+          volumeMounts:
+            - name: shared-files
+              mountPath: /usr/src/app/files
+            - name: config-file
+              mountPath: /usr/src/app/config
+          env:
+            - name: MESSAGE
+              valueFrom:
+                configMapKeyRef:
+                  name: log-output-config
+                  key: MESSAGE
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: exercises
+  name: log-output-svc
+spec:
+  type: ClusterIP
+  selector:
+    app: log-output
+  ports:
+    - port: 80
+      targetPort: 3000

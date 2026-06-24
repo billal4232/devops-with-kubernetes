@@ -3,7 +3,6 @@ import os
 import psycopg2
 
 app = Flask(__name__)
-
 PORT = os.getenv("PORT", "3000")
 
 def get_conn():
@@ -13,6 +12,10 @@ def get_conn():
         user=os.getenv("POSTGRES_USER"),
         password=os.getenv("POSTGRES_PASSWORD"),
     )
+
+@app.route("/")
+def health():
+    return "ok", 200
 
 @app.route("/pingpong")
 def pingpong():

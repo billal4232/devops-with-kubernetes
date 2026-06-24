@@ -1,3 +1,4 @@
 # Kubernetes secrets - never commit real credentials
 **/postgres-secret.yaml
 *postgres-secret.yaml
+iam-policy.json

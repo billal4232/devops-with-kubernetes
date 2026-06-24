@@ -96,3 +96,7 @@ Chapter 3 — Cloud (EKS)
 3.1
 
 Deployed Ping-pong + Postgres to AWS EKS (instead of GKE), exposed via a LoadBalancer service. Used ECR for the image and the EBS CSI driver for gp2 storage.
+
+3.2
+
+Deployed Log output + Ping-pong to EKS behind a single Ingress (one ALB) routing /pingpong to ping-pong and / to log-output. Required installing the AWS Load Balancer Controller (via IRSA) since EKS ships without an ingress controller. Added a / health-check route to ping-pong so the ALB marks it healthy.
